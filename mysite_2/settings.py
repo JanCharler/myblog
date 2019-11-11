@@ -23,7 +23,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 SECRET_KEY = 'b0q_405w5_29o-2&mxrt8ikpovsvlr4y8x@p3#*_)u)t2%ll2#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['206.189.22.94', 'http://www.jancharler.com']
 
