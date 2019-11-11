@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'blog/mystyle.css' %}">
+
+	<div class="title wrapper" align="center">
+		<a class="btns restart_btn btn btn-primary" href ="{% url 'reset' %}" ><span class="glyphicon glyphicon-refresh">Refresh</span></a>
+		
+		<h1>Closest Pair Algo</h1>
+		<button class="btns compute_btn btn btn-success " onclick="play_algo()">Play</button>	
+<!-- 		<button class="btns rvrse btn btn-success" aria-disabled="true"  onclick="reverse()">Reverse</button>	 -->
+		
+	</div>
+	<p align="center"> Click area below to add points. Closest pair will be marked. Click Play to see how the algorithm works!<p>
+
+</div>
+	
+<div class="thegrid" align="center" >
+	<table class="tb" style="table-layout:fixed;">
+		{% for i in col %}
+		<tr class="rows">
+			{% for j in row %}
+			<td class="cells hover"><!-- <button class="cells"></button> --></td>
+	 		{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+<!-- 	<p><span class="result"></span></p> -->
+
+	<!-- Announcement -->
+ <div class="announcement container" align="center">
+ 	<h1></h1>
+  </div>
+
+
+<script type="text/javascript" src="{% static 'blog/closest_dis.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>Jan's Blog</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'blog/mystyle.css' %}">
+
+
+</head>
+<body>
+
+	<!-- Navbar class -->
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark nav-fixed-top mynavbar">
+
+		<!-- Brand -->
+		<a class ="navbar-brand" href="{% url 'post_list' %}" >CC</a>
+
+		<!-- Toggler button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleItems">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleItems">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class ="nav-link" href="{% url 'about' %}" >About</a>
+				</li>
+				{% if user.is_authenticated %}
+				<li>
+					<a class ="nav-link" href="{% url 'create' %}" >Create Post</a>
+				</li>
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'draft_view' %}" >Drafts</a>
+				</li>
+				{% endif %}
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'closest_pair' %}" >More Projects</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav ml-auto">
+				{% if user.is_authenticated %}
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'logout' %}" >Logout</a>
+				</li>
+				{% else %}
+				<li class="navbar-item">
+					<a class ="nav-link" href="" >Register</a>
+				</li>
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'login' %}" >Login</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+	{% block body_block %}
+	{% endblock %}
+	</div>
+
+</body>
+</html>
