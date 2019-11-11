@@ -23,7 +23,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'blog/templates')
 SECRET_KEY = 'b0q_405w5_29o-2&mxrt8ikpovsvlr4y8x@p3#*_)u)t2%ll2#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['206.189.22.94', 'http://www.jancharler.com']
 
@@ -74,24 +74,24 @@ WSGI_APPLICATION = 'mysite_2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blogdb',
-        'USER': 'jancharler',
-        'PASSWORD': 'test_password1234',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
+# if DEBUG:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
+# else:
+DATABASES = {
+'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': 'blogdb',
+    'USER': 'jancharler',
+    'PASSWORD': 'test_password1234',
+    'HOST': 'localhost',
+    'PORT': '',
 }
+#}
 
 
 # Password validation
