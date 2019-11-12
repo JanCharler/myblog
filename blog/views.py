@@ -27,6 +27,9 @@ def process_closest_pair(request, col, row, total):
 	row = int(row)
 	total = int(total)
 
+	if total < len(coords.coord_list):
+		coords.clear()
+
 	error = coords.add(col, row)
 	# algo_steps = closest_pair.StepsOfAlgorithm()
 
@@ -42,8 +45,6 @@ def process_closest_pair(request, col, row, total):
 		'cp': cp,
 		'error': error,
 		'cells_marked': coords.coord_list,
-		'totalrows': trow,
-		'totalcols': tcol,
 		'steps': steps,
 		}
 	else:
@@ -81,8 +82,6 @@ class PostListView(ListView):
 
 class AboutView(TemplateView):
 	template_name = 'blog/about.html'
-
-
 
 class PostCreateView(LoginRequiredMixin, CreateView):
 	login_url = '/login/'
