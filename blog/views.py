@@ -27,7 +27,7 @@ def process_closest_pair(request, col, row, total):
 	row = int(row)
 	total = int(total)
 
-	if total < len(coords.coord_list):
+	if total < coords.count():
 		coords.clear()
 
 	error = coords.add(col, row)
