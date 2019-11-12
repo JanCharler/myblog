@@ -134,9 +134,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-# STATIC_DIR =  os.path.join(BASE_DIR,'static/')
+STATIC_DIR =  os.path.join(BASE_DIR,'blog/static/')
 STATICFILES_DIRS = [
-
+    STATIC_DIR
 ]
 
 LOGIN_REDIRECT_URL = '/'
