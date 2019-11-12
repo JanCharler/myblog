@@ -11,15 +11,23 @@
 	<div class="title wrapper" align="center">
 		<a class="btns restart_btn btn btn-primary" href ="{% url 'reset' %}" ><span class="glyphicon glyphicon-refresh">Refresh</span></a>
 		
-		<h1>Closest Pair Algo</h1>
+		<h1>Closest Pair Algorithm (nlogn)</h1>
 		<button class="btns compute_btn btn btn-success " onclick="play_algo()">Play</button>	
 <!-- 		<button class="btns rvrse btn btn-success" aria-disabled="true"  onclick="reverse()">Reverse</button>	 -->
 		
 	</div>
-	<p align="center"> Click area below to add points. Closest pair will be marked. Click Play to see how the algorithm works!<p>
+	<p align="center"> Click on the area below to add points. Closest pair will be marked. Click Play to see how the algorithm works!<p>
 
 </div>
-	
+
+<script type="text/javascript" class="boardDimensions">
+	var bd = {
+		'col': '{{col}}',
+		'row': '{{row}}'
+		}
+</script>
+<!-- <div class="hidden" id="bd"></div> -->
+
 <div class="thegrid" align="center" >
 	<table class="tb" style="table-layout:fixed;">
 		{% for i in col %}
@@ -35,7 +43,7 @@
 
 	<!-- Announcement -->
  <div class="announcement container" align="center">
- 	<h1></h1>
+ 	<h3></h3>
   </div>
 
 

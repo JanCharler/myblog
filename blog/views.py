@@ -14,6 +14,8 @@ import pdb
 
 points = []
 coords = closest_pair.Coordinates(points)
+trow = 30
+tcol = 10
 
 def reset_closest_pair(request):
 
@@ -40,6 +42,8 @@ def process_closest_pair(request, col, row, total):
 		'cp': cp,
 		'error': error,
 		'cells_marked': coords.coord_list,
+		'totalrows': trow,
+		'totalcols': tcol,
 		'steps': steps,
 		}
 	else:
@@ -64,8 +68,8 @@ class ClosestPairProject(TemplateView):
 		coords.clear() # clear data, as page is reset
 		# algo_steps.clear()  # clear data, as page is reset
 		context = super().get_context_data(**kwargs)
-		context['row'] = range(30) #150 #20
-		context['col'] = range(10) #75 #10
+		context['row'] = range(trow) #150 #20
+		context['col'] = range(tcol) #75 #10
 		return context
 
 

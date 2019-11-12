@@ -54,7 +54,9 @@ def ClosestSplitPair(Px, Py, closest_non_split_pair):
 	
 	# List comprehension of all values inside the range that we want. Big-oh n
 	print(f"This is Py {Py}")
+
 	Sy = [val for val in Py if abs(val[0]- x_hat) <= small_delta]
+
 	print(f"This is small delta {small_delta}")
 	print(f"This is Sy {Sy}")
 	print(f"This is x_hat {x_hat}")
@@ -141,10 +143,11 @@ def find_smallest(left, right):
 def closest_pair(Px, Py):
 	'''
 	Takes in 2 args, Points in ascending order from their X coords and Points in ascending order from their Y coords.
+	Px halves each time round the this recursive loop whilst Py stays the same.
 	'''
-	#steps_of_algorithm.add("Announcement:","Entered recursive loop")
+
 	# Get number of coords, n
-	n = max(len(Px), len(Py))
+	n = len(Px) # max(len(Px), len(Py))
 	n_over_2 = int(n/2)
 
 
@@ -154,10 +157,10 @@ def closest_pair(Px, Py):
 	# center_point_xs.append(x_hat)
 
 	left_side_x_ordered = Px[:n_over_2]
-	left_side_y_ordered = Py[:n_over_2]
-
 	right_side_x_ordered = Px[n_over_2:]
-	right_side_y_ordered = Py[n_over_2:]
+
+	#left_side_y_ordered = Py[:n_over_2]
+	#right_side_y_ordered = Py[n_over_2:]
 
 	
 	# Base case:
@@ -207,17 +210,19 @@ def closest_pair(Px, Py):
 
 
 
-		steps_of_algorithm.add("left_side_x_ordered", left_side_x_ordered)
-		# steps_of_algorithm.add("left_side_y_ordered", left_side_y_ordered)
-		steps_of_algorithm.add("right_side_x_ordered", right_side_x_ordered)
+		#steps_of_algorithm.add("left_side_x_ordered", left_side_x_ordered)
+		
+		#steps_of_algorithm.add("right_side_x_ordered", right_side_x_ordered)
+		divideVals = [(left_side_x_ordered), (right_side_x_ordered), x_hat]
+		steps_of_algorithm.add("boardDivided", divideVals)
 		#steps_of_algorithm.add("right_side_y_ordered", right_side_y_ordered)
 		#steps_of_algorithm.add("Announcement:","Divided coordinate list in half.")
 		#steps_of_algorithm.add("Announcement:",f"Left side coords: {left_side_x_ordered}")
 		#steps_of_algorithm.add("Announcement:",f"Right side coords: {right_side_x_ordered}")
 
 		# return find_smallest(closest_pair(left_side_x_ordered, left_side_y_ordered), closest_pair(right_side_x_ordered, right_side_y_ordered))
-		ld = closest_pair(left_side_x_ordered, left_side_y_ordered)
-		rd = closest_pair(right_side_x_ordered, right_side_y_ordered)
+		ld = closest_pair(left_side_x_ordered, Py)
+		rd = closest_pair(right_side_x_ordered, Py)
 
 		steps_of_algorithm.add("LeftSideLowest", ld)
 		steps_of_algorithm.add("RightSideLowest", rd)
@@ -230,6 +235,7 @@ def closest_pair(Px, Py):
 		#steps_of_algorithm.add("Announcement:","Smallest distance pair between those two is {}".format(smallest_right_left))
 		d_split_pair = ClosestSplitPair(Px, Py, smallest_right_left)
 
+		steps_of_algorithm.add("ThoroughlyCheckedCoords", Px)
 		#steps_of_algorithm.add("SmallestOfRightLeft", smallest_right_left)
 		#steps_of_algorithm.add("SmallestIncludingSplitPair", d_split_pair)
 
