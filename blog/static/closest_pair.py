@@ -347,6 +347,10 @@ class Coordinates():
 def find_closest_pair(Points):
 	print("\n\n")
 	global steps_of_algorithm
+
+	# Attempt to fix bug on online server
+	steps_of_algorithm.clear()
+
 	# (Create a step counting class- using this for my online Blog)
 	# NOW IN GLOBAL steps_of_algorithm = StepsOfAlgorithm()
 	steps_of_algorithm = StepsOfAlgorithm()
