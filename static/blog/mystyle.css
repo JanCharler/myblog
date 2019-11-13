@@ -1,0 +1,125 @@
+body{
+	font-family: 'Poppins', sans-serif;
+	background-color: #F9F9F9;
+}
+
+.homepagetitle{
+	color: black;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+
+}
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.dropdown-content:hover{
+	background-color: #EFEFEF;
+}
+
+
+li.dropdown:hover > .dropdown-menu {
+    display: table-row; 
+    overflow:auto;
+    min-width: 200px;
+}
+li.dropdown > .dropdown-menu {
+}
+
+.janpic{
+	max-width: 50%;
+	float: left;
+  	height: auto;
+	border-radius: 8%;
+	margin-right: 10px;
+}
+.clearfix{
+	padding-top: 25px;
+	overflow: auto;
+}
+
+.intro{
+	background-image: url("codebg.png");
+	background-repeat: no-repeat;
+	opacity: 0.7;
+	background
+}
+
+.mynavbar{
+	font-size: 1.2em;
+}
+
+.hover:hover{
+	transition-duration: 0s;
+	background-color: grey; /* Green #4CAF50; */
+}
+
+.cellsOtherDetails:active{
+	transition-duration: 0.15s;
+	background-color: black;
+	/*border-radius: 100%*/
+}
+
+.cells{	
+  	background-color: white;
+  	color: white;
+}
+
+.cellsOtherDetails{
+	width: 50px; /* 50px; 8px;*/ 
+	height: 50px; /*50px; 8px;*/
+	border-radius: 0%;
+  	text-align: center;
+  	font-size: 1.5em;
+  	font-family: 'Poppins', sans-serif;
+  	table-layout: fixed;
+}
+
+.tb{
+	table-layout: fixed;
+	border: 10px solid black;	
+}
+
+.rows{
+}
+
+.wrapper{
+	margin:1%;
+	display:grid;
+	grid-template-columns: 1fr 4fr 1fr
+}
+
+.btns{
+	margin: 10px 10px 10px 10px
+}
+
+.rvrse{
+
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.compute{
+
+	color: #fff;
+	background-color: #4CAF50;
+}
+
+.btns:active{
+	transform: translateY(5px);
+	/*background-color: #3e8e41;
+	box-shadow: 0 5px #666;*/
+}
+
