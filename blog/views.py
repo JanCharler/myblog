@@ -17,9 +17,7 @@ import pdb
 # coords = closest_pair.Coordinates(points)
 
 def reset_closest_pair(request):
-
-	#coords.clear()
-	print("Trying to reset. Please implement this.")
+	
 	return redirect('closest_pair')
 
 def process_closest_pair(request):

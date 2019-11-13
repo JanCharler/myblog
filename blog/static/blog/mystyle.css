@@ -1,6 +1,33 @@
+body{
+	font-family: 'Poppins', sans-serif;
+	background-color: #F9F9F9;
+}
+
+.homepagetitle{
+	color: black;
+	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+
+}
+
+.janpic{
+	max-width: 30%;
+  	height: auto;
+	border-radius: 8%;
+	position: right;
+
+}
+
+.intro{
+	background-image: url("codebg.png");
+	background-repeat: no-repeat;
+	opacity: 0.7;
+	background
+}
+
 .mynavbar{
 	font-size: 1.2em;
-	background-color: : blue;
 }
 
 .hover:hover{

@@ -1,18 +1,34 @@
 {% extends "blog/base.html" %}
-
+{% load staticfiles %}
 
 {% block body_block %}
 
-<div class="container">
+<div class="container shadow-sm bg-white rounded">
+	<div class="jumbotron" style="background: white">
+	<h1 class="homepagetitle">Welcome to my webpage!</h1>
+	<hr>
+	<p>Here you will find my interactive programming projects and other cool stuff!.</p>
+	<p>Please enjoy yourself!</p>
+	</div>
+</div>
 
-<h1>Post list:</h1>
-<br>
-{% for post in post_list %}
-<h3><a href="{% url 'post_detail' pk=post.pk %}">{{post.title|title}}</a></h3>
-<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{post.approved_comments.count}}</a>
-<p>Author: {{post.author|title}}</p>
-<p>Published: {{post.published_date|date:'d-M-y-H:m:s'}}</p>
-<br>
-{% endfor %}
+<div class="container">
+	<h2>Recent posts</h2>
+	<div class="card" style="width: 25rem;">
+	 <a href="#"><img src="{% static 'blog/always7.png' %}" class="card-img-top" alt="imageOf8Rectangles"></a>
+	  <div class="card-body">
+	    <h5 class="card-title">The Ingenuity of the Closest Pair Algorithm</h5>
+	    <p class="card-text">What's the thinking behind the value 7?</p>
+	    <a href="#" class="btn btn-secondary">Click here to read!</a>
+	  </div>
+	</div>
+
+	{% for post in post_list %}
+	<h3><a href="{% url 'post_detail' pk=post.pk %}">{{post.title|title}}</a></h3>
+	<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{post.approved_comments.count}}</a>
+	<p>Author: {{post.author|title}}</p>
+	<p>Published: {{post.published_date|date:'d-M-y-H:m:s'}}</p>
+	<br>
+	{% endfor %}
 </div>
 {% endblock %}

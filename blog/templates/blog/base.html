@@ -2,7 +2,7 @@
 {% load staticfiles %}
 <html>
 <head>
-	<title>Jan's Blog</title>
+	<title>Jan Charler's Blog</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -25,10 +25,10 @@
 <body>
 
 	<!-- Navbar class -->
-	<nav class="navbar navbar-expand-sm bg-dark navbar-dark nav-fixed-top mynavbar">
+	<nav class="navbar navbar-expand-sm navbar-light nav-fixed-top mynavbar" style="background-color: #F9F9F9;">
 
 		<!-- Brand -->
-		<a class ="navbar-brand" href="{% url 'post_list' %}" >CC</a>
+		<a class ="navbar-brand" href="{% url 'post_list' %}" >Home</a>
 
 		<!-- Toggler button -->
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleItems">
@@ -42,16 +42,20 @@
 					<a class ="nav-link" href="{% url 'about' %}" >About</a>
 				</li>
 				{% if user.is_authenticated %}
-				<li>
-					<a class ="nav-link" href="{% url 'create' %}" >Create Post</a>
-				</li>
-				<li class="navbar-item">
+<!-- 				<li class="navbar-item">
 					<a class ="nav-link" href="{% url 'draft_view' %}" >Drafts</a>
-				</li>
+				</li> -->
 				{% endif %}
 				<li class="navbar-item">
-					<a class ="nav-link" href="{% url 'closest_pair' %}" >More Projects</a>
+					<a class ="nav-link" href="{% url 'closest_pair' %}" >My Web Apps</a>
 				</li>
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'closest_pair' %}" >Connect Four</a>
+				</li>
+				<li class="navbar-item">
+					<a class ="nav-link fab fa-linkedin-in grey-text" href="{% url 'closest_pair' %}" >LinkedIn</a>
+				</li>
+
 			</ul>
 			<ul class="nav navbar-nav ml-auto">
 				{% if user.is_authenticated %}
@@ -59,21 +63,21 @@
 					<a class ="nav-link" href="{% url 'logout' %}" >Logout</a>
 				</li>
 				{% else %}
-				<li class="navbar-item">
+<!-- 				<li class="navbar-item">
 					<a class ="nav-link" href="" >Register</a>
-				</li>
+				</li> -->
 				<li class="navbar-item">
-					<a class ="nav-link" href="{% url 'login' %}" >Login</a>
+					<a class ="nav-link" href="{% url 'login' %}" >Login (Admin only)</a>
 				</li>
 				{% endif %}
 			</ul>
 		</div>
 	</nav>
 
-	<div class="container">
+	
 	{% block body_block %}
 	{% endblock %}
-	</div>
+
 
 </body>
 </html>

@@ -10,7 +10,7 @@ var playIsPressed = false
 var previous_cp = {0: [], 1: []} //holds prev winner coords
 
 
-//Defined this in the html script tag of closest_pair.html
+
 //bd.col and bd.row are both in this format: "range(d+, d+)"
 const re = /range\(\d+,\s*(\d+)/
 boardCollumns = parseInt(re.exec(bd.col)[1])
@@ -25,23 +25,12 @@ function points_list(action)
 	return number_of_points
 }
 
-// Change colour when bg is clicked
-
-// Add value
+// Counter to keep track of algo explanation
 count = 0;
 countMaxReached = false;
 
-function reverse(){
 
-	$(".compute_btn").text("Step " + count.toString() + "/" + totalSteps.toString())
-	count-=2
-	if (count<0)
-	{
-		count=0
-	}
-	play_algo()
-}
-
+// Colour scheme for closest pair algorithm
 baseColour = 'black'; //393E41 
 closestPairColour = '#E8BD00';
 leftSideColour = '#0000EB';
@@ -58,7 +47,7 @@ function setBoardToBaseColour(points)
 			
 			$(c).css("border", "0px solid "+ baseColour)
 			$(c).css("background-color", baseColour)
-			$(c).text("") //counter)
+			$(c).text("")
 		}
 }
 
