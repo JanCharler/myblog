@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Connect Four Game by Jan</title>
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script
 		  src="https://code.jquery.com/jquery-3.4.1.js"
 		  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		  crossorigin="anonymous">
 	</script>
-  <link rel="stylesheet" type="text/css" href="connectfour.css">
- 
-
-</head>
-<body>
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/connect4/connectfour.css' %}">
 
 	<div class="container">
 		<div class="mytitle">
@@ -98,6 +94,5 @@
 			background-color:blue;
 		}
 	</style>
-	 <script type="text/javascript" src="connectfour.js"></script>
-</body>
-</html>
+	 <script type="text/javascript" src="{% static 'blog/connect4/connectfour.js' %}" ></script>
+{% endblock %}

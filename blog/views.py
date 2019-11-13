@@ -62,6 +62,9 @@ class ClosestPairProject(TemplateView):
 		context['col'] = range(10) #75 #10
 		return context
 
+class ConnectFourView(TemplateView):
+	template_name = "blog/connectfour.html"
+
 class UnderConstructionView(TemplateView):
 	template_name = "blog/underconstruction.html"
 

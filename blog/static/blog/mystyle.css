@@ -28,7 +28,6 @@ body{
 li.dropdown:hover > .dropdown-menu {
     display: table-row; 
     overflow:auto;
-    min-width: 200px;
 }
 li.dropdown > .dropdown-menu {
 }
@@ -39,6 +38,9 @@ li.dropdown > .dropdown-menu {
   	height: auto;
 	border-radius: 8%;
 	margin-right: 10px;
+}
+.whoami{
+	padding-left: 10px;
 }
 .clearfix{
 	padding-top: 25px;
