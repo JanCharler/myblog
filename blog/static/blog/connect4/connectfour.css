@@ -1,0 +1,27 @@
+.mytitle{
+	text-align: center;
+}
+
+#winnerannounce{
+	text-align: center;
+}
+
+table{
+	border-collapse: separate;
+	border-spacing:3px;
+	table-layout: fixed;
+}
+
+td{
+	border: 4px solid black;
+	border-radius: 100%;
+	background-color: grey;
+	width: 100px;
+	height:100px;
+}
+
+#toplevelannouncement{
+	
+	font-size:2em;
+	
+}
