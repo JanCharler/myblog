@@ -8,23 +8,25 @@
 	background-color: grey; /* Green #4CAF50; */
 }
 
-.cells:active{
-	transition-duration: 0.4s;
+.cellsOtherDetails:active{
+	transition-duration: 0.5s;
 	background-color: black;
 	/*border-radius: 100%*/
 }
 
 .cells{	
+  	background-color: white;
+  	color: white;
+}
+
+.cellsOtherDetails{
 	width: 50px; /* 50px; 8px;*/ 
 	height: 50px; /*50px; 8px;*/
 	border-radius: 0%;
-  	background-color: white;
-  	color: white;
   	text-align: center;
   	font-size: 1.5em;
   	font-family: 'Poppins', sans-serif;
   	table-layout: fixed;
-
 }
 
 .tb{

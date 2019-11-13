@@ -8,69 +8,63 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse, reverse_lazy
 from .static import closest_pair
 from django.http import JsonResponse, HttpResponse, HttpResponseRedirect
+import json
 # Create your views here.
 
 import pdb
 
-points = []
-coords = closest_pair.Coordinates(points)
-trow = 30
-tcol = 10
+# points = []
+# coords = closest_pair.Coordinates(points)
 
 def reset_closest_pair(request):
 
-	coords.clear()
+	#coords.clear()
+	print("Trying to reset. Please implement this.")
 	return redirect('closest_pair')
 
-def process_closest_pair(request, col, row, total):
-	col = int(col)
-	row = int(row)
-	total = int(total)
+def process_closest_pair(request):
 
-	if total < coords.count():
-		coords.clear()
+	if request.method == "POST":
 
-	error = coords.add(col, row)
-	# algo_steps = closest_pair.StepsOfAlgorithm()
+		data_raw = request.body
+		data = json.loads(data_raw)
+		
+		print(data)
+		total = len(data)
 
-	# CP algorithm done here
-	cp, steps = coords.cp()
-	# steps = algo_steps.return_steps()
-	# print(f"steps being passed in: {steps}")
-	# steps = {"one":"one"}
-	if error == 'pass':
-		# pdb.set_trace()
+		# Creating coords list, as it's passed as an object and our/
+		# algorithm wants a list of tuples.
+
+		points = []
+		for coords in data:
+			x = coords['x']
+			y = coords['y']
+			points.append((x,y))
+		print(points)
+
+		# CP algorithm done here
+		cp, steps = closest_pair.find_closest_pair(points)
+
 		data = {
-		'total_coords': coords.count(),
 		'cp': cp,
-		'error': error,
-		'cells_marked': coords.coord_list,
-		'steps': steps,
-		}
-	else:
-		data = {
-		'total_coords': coords.count(),
-		'cp': None,
-		'error': error,
-		'cells_marked': coords.coord_list,
 		'steps': steps,
 		}
 
-	# print(f"Total clicks: {total}")
-	# print(f"Total coords on board: {coords.count()}")
-	print(f"sending {data}")
-	print("\n")
-	return JsonResponse(data)
+		# print(f"Total clicks: {total}")
+		# print(f"Total coords on board: {coords.count()}")
+		print(f"sending {data}")
+		print("\n")
+	return JsonResponse({"Results":data})
 
 class ClosestPairProject(TemplateView):
 	template_name = 'blog/closest_pair.html'
 
 	def get_context_data(self, **kwargs):
-		coords.clear() # clear data, as page is reset
+		#coords.clear() # clear data, as page is reset
 		# algo_steps.clear()  # clear data, as page is reset
 		context = super().get_context_data(**kwargs)
-		context['row'] = range(trow) #150 #20
-		context['col'] = range(tcol) #75 #10
+		context['row'] = range(30) #150 #20
+		context['col'] = range(10) #75 #10
 		return context
 
 

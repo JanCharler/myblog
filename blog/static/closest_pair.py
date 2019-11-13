@@ -345,6 +345,12 @@ class Coordinates():
 
 
 def find_closest_pair(Points):
+	'''
+	Takes in coordinates in the form of a list of tuples.
+	For example, [(2,3),(0,0)].
+	SPECIAL VERSION: returns closest pair coordinates and the steps of the algorithm as dict.
+	Use tuple unpacking.
+	'''
 	print("\n\n")
 	global steps_of_algorithm
 

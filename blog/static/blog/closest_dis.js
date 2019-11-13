@@ -452,6 +452,39 @@ function play_algo()
 	}	
 }
 
+//CSRF TOKEN ITEMS
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+//CSRF TOKEN ITEMS END
+
+var cellsSelected = new Array()
+
 $(".cells").on('mousedown', function()
  {
 
@@ -459,104 +492,96 @@ $(".cells").on('mousedown', function()
 	{
 		$(".announcement").children().text("Input failed. Explanation is in progress.")
 		return
-
 	}
-  	//Get data on where user just clicked
+
+  	//Get row/col of where user just clicked on the table
     row = $(this).closest("tr").index()
     col = $(this).closest("td").index()
     item_clicked = $(this)
-    //Just for debugging, print this
-    total = points_list("add")
 
-    // Create XHR object
-    var xhr = new XMLHttpRequest();
+    //Check if coordinate position is valid
+	for (cell of cellsSelected)
+	{
+		if (cell.x == col)
+		{
+			$(".announcement").children().text("That collumn is already taken. Please try elsewhere!")
+			return
+		}
+	}
 
-    //We want a JSON response
-    xhr.responseType = "json"
+   	cellsSelected.push({'x': col, 'y': row})
 
-    // OPEN - method, url/file, async(bool)
-    //Request GET method with following URL and make is asyncronous
-    xhr.open('GET', 'process/col=' + col.toString() + 
-    				"&row=" + row.toString() + 
-    				"&total=" + 
-    				total.toString()
-    				, true);
-    
-    // Sends request
-    xhr.send(); 
-    var result;
+    total = cellsSelected.length //points_list("add")
 
-    xhr.onload = function () 
+    $.ajax(
+    {
+	    url: '/closestpair/process/',
+	    type: 'POST',
+	    // responseType = "json",
+	    data: JSON.stringify(cellsSelected),
+	    success: function(result) 
 	    {
-	    //Request complete
-	    if (xhr.readyState === 4) // 4 is xhr.DONE
-	    { 
-	        if (xhr.status === 200) // 200 is "OK"
-	        { 
-	        	result = xhr.response;
-	        	console.log(xhr)
-	        	console.log(result)
-
-	        	//Check if coordinate position was valid
-	        	if (result.error == 'pass')
-	        	{
-	        		//Remove error message
-	        		$(".announcement").children().text("")
-
-	        		//Change colour of clicked item to black
-					bgcolor = "black"
-	    			item_clicked.css("background-color", bgcolor)
-
-	    			//Check if more than 1 coordinate, means we can display our closest pair.
-	        		if (result.total_coords > 1)
-	        		{
-		    			//Store the pair of coordinates
-						firstItemInPair = result.cp[0]
-						secondItemInPair = result.cp[1]
-						$(".result").text("Min result found: " + firstItemInPair.toString() + " and " + secondItemInPair.toString())
-
-						// Get object model of winning pair
-						// First pass in ROW then COL. Eg: $(".rows").eq(ROW).children().(COL)
-						objectmodelOfPairItem1 = $(".rows").eq(firstItemInPair[1]).children().eq(firstItemInPair[0])
-						objectmodelOfPairItem22 = $(".rows").eq(secondItemInPair[1]).children().eq(secondItemInPair[0])
-
-						// Change colour of previous winner back to black
-						previousWinnerItem1 = previous_cp[0] 
-						previousWinnerItem2 = previous_cp[1] 
-
-						$(".rows").eq(previousWinnerItem1[1]).children().eq(previousWinnerItem1[0]).css("background-color", bgcolor)
-						$(".rows").eq(previousWinnerItem2[1]).children().eq(previousWinnerItem2[0]).css("background-color", bgcolor)
-
-						//Change colour of winner to gold
-						$(objectmodelOfPairItem1).css("background-color", closestPairColour)
-						$(objectmodelOfPairItem22).css("background-color", closestPairColour)
-
-						// Add current winner to list of prev winners
-						previous_cp[0] = firstItemInPair;
-						previous_cp[1] = secondItemInPair;
-
-						// Save list of steps
-						
-						algorithmSteps = result.steps;
-						console.log(algorithmSteps)
-					}
-	        	}
-	        	else if (result.error == 'xerror')
-	        	{
-	        		$(".announcement").children().text("That X coordinate is already full, please try a different coordinate!")
-
-	     //    		for items in item_clicked
-	     //    				// First pass in ROW then COL. Eg: $(".rows").eq(ROW).children().(COL)
-						// objectmodelOfPairItem1 = $(".rows").eq(firstItemInPair[1]).children().eq(firstItemInPair[0])
-	        	}
-	    	}
+	    	algorithmSteps = result.Results.steps
+	    	cp = result.Results.cp
+	    	updateTable()
 	    }
-};
-     //200: "OK"
-     //403: "Forbidden"
-     //404: "Not Found"
-
+	});
 })
 
+function updateTable(){
+
+		//Remove error message
+		$(".announcement").children().text("")
+
+		//Set all clicked points to black
+		setBoardToBaseColour(algorithmSteps[0].Points);
+
+		//Set closest pair to gold.
+		for (cell of cp)
+		{
+			c = $(".cells").closest("tr").eq(cell[1]).children().eq(cell[0])
+			
+			// $(c).css("border", "5px solid red")
+			$(c).css("background-color", closestPairColour)
+			$(c).text("") 
+			//$(c).text(cell[0]) //counter)
+		}
+}
+
+	        	
+
+ //    // Create XHR object
+ //    var xhr = new XMLHttpRequest();
+
+ //    //We want a JSON response
+ //    xhr.responseType = "json"
+
+ //    // OPEN - method, url/file, async(bool)
+ //    //Request GET method with following URL and make is asyncronous
+ //    xhr.open('GET', 'process/col=' + col.toString() + 
+ //    				"&row=" + row.toString() + 
+ //    				"&total=" + 
+ //    				total.toString()
+ //    				, true);
+    
+ //    // Sends request
+ //    xhr.send(); 
+ //    var result;
+ //    xhr.onload = function () 
+	//     {
+	//     //Request complete
+	//     if (xhr.readyState === 4) // 4 is xhr.DONE
+	//     { 
+	//         if (xhr.status === 200) // 200 is "OK"
+	//         { 
+	//         	result = xhr.response;
+	//         	console.log(xhr)
+	//         	console.log(result)
+	//     	}
+	//     }
+	// };
+ //     //200: "OK"
+ //     //403: "Forbidden"
+ //     //404: "Not Found"
 
 

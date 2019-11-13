@@ -14,7 +14,8 @@ urlpatterns = [
 	url(r'^update/(?P<pk>\d+)$', views.PostUpdateView.as_view(), name='post_update'),
 	url(r'^delete/(?P<pk>\d+)$', views.PostDeleteView.as_view(), name="post_delete"),
 	url(r'^closestpair/$', views.ClosestPairProject.as_view(), name='closest_pair'),
-	url(r'^closestpair/process/col=(?P<col>\d+)&row=(?P<row>\d+)&total=(?P<total>\d+)/$', views.process_closest_pair, name='process'),
-	url(r'^closestpair/reset/$', views.reset_closest_pair, name="reset")
+	url(r'^closestpair/process/$', views.process_closest_pair, name='process'),
+	#url(r'^closestpair/process/col=(?P<col>\d+)&row=(?P<row>\d+)&total=(?P<total>\d+)/$', views.process_closest_pair, name='process'),
+	url(r'^closestpair/reset/$', views.reset_closest_pair, name="reset"),
 
 ]

@@ -26,14 +26,16 @@
 		'row': '{{row}}'
 		}
 </script>
-<!-- <div class="hidden" id="bd"></div> -->
+
+<!-- Hidden CSRF token to access in JS side for our AJAX POST request -->
+<div class="hidden">{% csrf_token %}</div>
 
 <div class="thegrid" align="center" >
-	<table class="tb" style="table-layout:fixed;">
+	<table class="tb" style="">
 		{% for i in col %}
 		<tr class="rows">
 			{% for j in row %}
-			<td class="cells hover"><!-- <button class="cells"></button> --></td>
+			<td class="cells hover cellsOtherDetails"><!-- <button class="cells"></button> --></td>
 	 		{% endfor %}
 		</tr>
 		{% endfor %}
