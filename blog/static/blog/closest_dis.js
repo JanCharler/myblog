@@ -1,7 +1,7 @@
 vals = [[]]
 cols = []
 
-console.log("Hello! Running V1")
+console.log("Hello! Running V2")
 
 number_of_points = 0
 
@@ -10,20 +10,11 @@ var playIsPressed = false
 var previous_cp = {0: [], 1: []} //holds prev winner coords
 
 
-
 //bd.col and bd.row are both in this format: "range(d+, d+)"
 const re = /range\(\d+,\s*(\d+)/
 boardCollumns = parseInt(re.exec(bd.col)[1])
 boardRows = parseInt(re.exec(bd.row)[1])
 
-function points_list(action)
-{
-	if (action === "add")
-	{
-		number_of_points++
-	}
-	return number_of_points
-}
 
 // Counter to keep track of algo explanation
 count = 0;

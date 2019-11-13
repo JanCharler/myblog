@@ -11,12 +11,38 @@ body{
 
 }
 
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.dropdown-content:hover{
+	background-color: #EFEFEF;
+}
+
+
+li.dropdown:hover > .dropdown-menu {
+    display: table-row; 
+    overflow:auto;
+    min-width: 200px;
+}
+li.dropdown > .dropdown-menu {
+}
+
 .janpic{
-	max-width: 30%;
+	max-width: 50%;
+	float: left;
   	height: auto;
 	border-radius: 8%;
-	position: right;
-
+	margin-right: 10px;
+}
+.clearfix{
+	padding-top: 25px;
+	overflow: auto;
 }
 
 .intro{
@@ -36,7 +62,7 @@ body{
 }
 
 .cellsOtherDetails:active{
-	transition-duration: 0.5s;
+	transition-duration: 0.15s;
 	background-color: black;
 	/*border-radius: 100%*/
 }

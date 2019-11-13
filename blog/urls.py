@@ -17,5 +17,6 @@ urlpatterns = [
 	url(r'^closestpair/process/$', views.process_closest_pair, name='process'),
 	#url(r'^closestpair/process/col=(?P<col>\d+)&row=(?P<row>\d+)&total=(?P<total>\d+)/$', views.process_closest_pair, name='process'),
 	url(r'^closestpair/reset/$', views.reset_closest_pair, name="reset"),
+	url(r'^underconstruction/', views.UnderConstructionView.as_view(), name="underconstruction"),
 
 ]

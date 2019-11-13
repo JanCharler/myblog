@@ -46,15 +46,27 @@
 					<a class ="nav-link" href="{% url 'draft_view' %}" >Drafts</a>
 				</li> -->
 				{% endif %}
+	
 				<li class="navbar-item">
-					<a class ="nav-link" href="{% url 'closest_pair' %}" >My Web Apps</a>
+					<a class ="nav-link fab fa-linkedin-in grey-text" href="https://www.linkedin.com/in/jan-charler-6a58b3167/" >LinkedIn</a>
 				</li>
 				<li class="navbar-item">
-					<a class ="nav-link" href="{% url 'closest_pair' %}" >Connect Four</a>
+					<a class ="nav-link fab fa-linkedin-in grey-text" href="https://github.com/JanCharler" >Github</a>
 				</li>
-				<li class="navbar-item">
-					<a class ="nav-link fab fa-linkedin-in grey-text" href="{% url 'closest_pair' %}" >LinkedIn</a>
-				</li>
+
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <!-- <div class="collapse navbar-collapse" > -->
+			        <li class="dropdown">
+			          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">My Web Apps<b class="caret"></b></a>
+			          <ol class="dropdown-menu dropdown-menu-right">
+			          	<li><a class ="nav-link dropdown-content active" href="{% url 'closest_pair' %}" >Closest Pair Demo</a></li>
+<!-- 			          	<li><a class ="nav-link dropdown-content active" href="{% url 'closest_pair' %}" >Connect Four</a></li>  
+			            <li><a class ="nav-link dropdown-content active" href="{% url 'closest_pair' %}" >Coming soon...</a></li> -->
+			          </ol>
+			        </li>
+
+			    <!-- </div>/.navbar-collapse -->
+
 
 			</ul>
 			<ul class="nav navbar-nav ml-auto">
