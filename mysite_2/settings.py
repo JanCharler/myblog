@@ -55,7 +55,7 @@ ROOT_URLCONF = 'mysite_2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [TEMPLATE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,8 +85,8 @@ else:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'blogdb',
-        'USER': 'jancharler',
+        'NAME': 'myblogprojectdb',
+        'USER': 'dbadmin',
         'PASSWORD': 'test_password1234',
         'HOST': 'localhost',
         'PORT': '',

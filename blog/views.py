@@ -34,7 +34,6 @@ def process_closest_pair(request):
 
 		# Creating coords list, as it's passed as an object and our/
 		# algorithm wants a list of tuples.
-
 		points = []
 		for coords in data:
 			x = coords['x']
@@ -50,8 +49,6 @@ def process_closest_pair(request):
 		'steps': steps,
 		}
 
-		# print(f"Total clicks: {total}")
-		# print(f"Total coords on board: {coords.count()}")
 		print(f"sending {data}")
 		print("\n")
 	return JsonResponse({"Results":data})

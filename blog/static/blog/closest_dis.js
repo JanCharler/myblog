@@ -1,6 +1,7 @@
 vals = [[]]
 cols = []
 
+consol.log("Hello! Running V1")
 
 number_of_points = 0
 
