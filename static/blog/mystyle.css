@@ -11,8 +11,6 @@ body{
 
 }
 
-
-
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
   .column {
@@ -28,7 +26,6 @@ body{
 li.dropdown:hover > .dropdown-menu {
     display: table-row; 
     overflow:auto;
-    min-width: 200px;
 }
 li.dropdown > .dropdown-menu {
 }
@@ -39,6 +36,9 @@ li.dropdown > .dropdown-menu {
   	height: auto;
 	border-radius: 8%;
 	margin-right: 10px;
+}
+.whoami{
+	padding-left: 10px;
 }
 .clearfix{
 	padding-top: 25px;
@@ -85,9 +85,11 @@ li.dropdown > .dropdown-menu {
 .tb{
 	table-layout: fixed;
 	border: 10px solid black;	
+
 }
 
-.rows{
+.announcement > h5{
+	color: red;
 }
 
 .wrapper{

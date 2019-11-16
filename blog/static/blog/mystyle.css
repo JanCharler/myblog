@@ -11,8 +11,6 @@ body{
 
 }
 
-
-
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width:600px) {
   .column {
@@ -87,9 +85,13 @@ li.dropdown > .dropdown-menu {
 .tb{
 	table-layout: fixed;
 	border: 10px solid black;	
+	margin-right: 10%;
+	margin-left: 10%;
 }
 
-.rows{
+.announcement > p{
+	color: black;
+	font-weight: bold;
 }
 
 .wrapper{
