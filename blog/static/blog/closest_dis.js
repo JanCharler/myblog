@@ -1,7 +1,7 @@
 vals = [[]]
 cols = []
 
-console.log("Hello! Running V3")
+console.log("Hello! Running V5")
 
 number_of_points = 0
 
@@ -403,7 +403,7 @@ function play_algo()
 		{
 			smDelta = algorithmSteps[count].SmallDelta
 			
-			$(".announcement").children().text("Note: Here we excluded the coordinates who's x value is more than our current minimum distance of " +
+			$(".announcement").children().text("Note: Here we only included the coordinates who's x value is more than our current minimum distance of " +
 				smDelta.toFixed(2) + " away from the center point shown in brown here. Next step is to brute-force compare all units in this region- but only those 7 units ahead of them in the list when sorted in ascending Y! (See other post as to why it's always 7!)")
 		}
 
