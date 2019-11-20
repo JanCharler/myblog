@@ -11,7 +11,7 @@
 			<hr>
 
 		</div>
-		<p>{{post.text}}</p>
+		<p>{{post.text|safe|linebreaks}}</p>
 			<p><strong>By {{post.author|title}}</strong></p>	
 		<!-- <p>Date created: {{post.created_date}}</p> -->
 
@@ -33,8 +33,7 @@
 				{% if comments.approved_comment or user.is_authenticated %}
 				<hr>
 				<p>By <strong>{{comments.author}}</strong></p>
-				<p><i>{{comments.text}}</i></p>
-				
+				<p><i>{{comments.text|safe|linebreaks}}</i></p>
 				<p>Date Published: {{comments.created_date}}</p>
 				{% if not comments.approved_comment %}
 					<a class="btn btn-primary" href="{% url 'approve_comment' pk=comments.pk %}">Approve comment</a>
