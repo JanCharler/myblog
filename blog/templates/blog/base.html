@@ -20,7 +20,6 @@
 	
 	<link rel="stylesheet" type="text/css" href="{% static 'blog/mystyle.css' %}">
 
-
 </head>
 <body>
 
@@ -41,11 +40,6 @@
 				<li>
 					<a class ="nav-link" href="{% url 'about' %}" >About</a>
 				</li>
-				{% if user.is_authenticated %}
-<!-- 				<li class="navbar-item">
-					<a class ="nav-link" href="{% url 'draft_view' %}" >Drafts</a>
-				</li> -->
-				{% endif %}
 	
 				<li class="navbar-item">
 					<a class ="nav-link fab fa-linkedin-in grey-text" href="https://www.linkedin.com/in/jan-charler-6a58b3167/" >LinkedIn</a>
@@ -55,7 +49,6 @@
 				</li>
 
 			    <!-- Collect the nav links, forms, and other content for toggling -->
-			    <!-- <div class="collapse navbar-collapse" > -->
 			        <li class="dropdown">
 			          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">My Web Apps<b class="caret"></b></a>
 			          <ol class="dropdown-menu dropdown-menu-right">
@@ -64,9 +57,14 @@
 			            <li><a class ="nav-link dropdown-content active" href="{% url 'underconstruction' %}" >Coming soon...</a></li>
 			          </ol>
 			        </li>
-
-			    <!-- </div>/.navbar-collapse -->
-
+			    {% if user.is_authenticated %}
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'create' %}" >Create Post</a>
+				</li>
+				<li class="navbar-item">
+					<a class ="nav-link" href="{% url 'draft_view' %}" >Drafts</a>
+				</li>
+				{% endif %}
 
 			</ul>
 			<ul class="nav navbar-nav ml-auto">
@@ -75,9 +73,7 @@
 					<a class ="nav-link" href="{% url 'logout' %}" >Logout</a>
 				</li>
 				{% else %}
-<!-- 				<li class="navbar-item">
-					<a class ="nav-link" href="" >Register</a>
-				</li> -->
+
 				<li class="navbar-item">
 					<a class ="nav-link" href="{% url 'login' %}" >Login (Admin only)</a>
 				</li>
@@ -86,7 +82,6 @@
 		</div>
 	</nav>
 
-	
 	{% block body_block %}
 	{% endblock %}
 

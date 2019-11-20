@@ -1,6 +1,7 @@
 body{
 	font-family: 'Poppins', sans-serif;
 	background-color: #F9F9F9;
+	padding-bottom: 5%;
 }
 
 .homepagetitle{
@@ -9,6 +10,10 @@ body{
   	background-repeat: no-repeat;
   	background-size: cover;
 
+}
+
+.jumbotron{
+	background: white;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -91,7 +96,7 @@ li.dropdown > .dropdown-menu {
 
 .announcement > p{
 	color: black;
-	font-weight: bold;
+	
 }
 
 .wrapper{

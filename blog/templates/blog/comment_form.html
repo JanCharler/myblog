@@ -2,15 +2,18 @@
 
 {% block body_block %}
 
-<h1>Add comment</h1>
-
+<div class="container">
+<h1>Add a Comment.</h1>
+<h5>Thanks! (Please note comments will not be posted until they have been approved)</h5>
+<br>
 <form method="POST">
 
 	{% csrf_token %}
 	{{form.as_p}}
 
-	<input type="submit" class="btn btn-danger" value="Add comment">
+	<input type="submit" class="btn btn-primary" value="Add comment">
 
 </form>
+</div>
 
 {% endblock %}

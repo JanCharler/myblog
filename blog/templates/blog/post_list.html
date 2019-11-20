@@ -4,30 +4,31 @@
 {% block body_block %}
 
 <div class="container shadow-sm bg-white rounded">
-	<div class="jumbotron" style="background: white">
+	<div class="jumbotron">
 	<h1 class="homepagetitle">Welcome to my webpage!</h1>
 	<hr>
 	<p>Here you will find my interactive programming projects and other cool stuff. Please enjoy yourself!</p>
-	<hr>
+	</div>
 </div>
-
+<div class="container shadow-sm bg-white rounded">
 <div class="container">
+	<br>
 	<h2>Recent posts</h2>
+	<hr>
+	{% for post in post_list %}
 	<div class="card" style="width: 25rem;">
-	 <a href="#"><img src="{% static 'blog/always7.png' %}" class="card-img-top" alt="imageOf8Rectangles"></a>
-	  <div class="card-body">
-	    <h5 class="card-title">The Ingenuity of the Closest Pair Algorithm</h5>
-	    <p class="card-text">What is the thinking behind the value 7?</p>
-	    <a href="{% url 'underconstruction' %}" class="btn btn-secondary">Click here to read!</a>
-	  </div>
+		<a href="#"><img src="{{post.picture.url}}" alt = "postimg" class="card-img-top"></a>
+		<div class="card-body">
+			<h5 class="card-title"><a href="{% url 'post_detail' pk=post.pk %}">{{post.title|title}}</a></h5>
+			 <p class="card-text">{{post.text|truncatewords:20}}</p>
+			 <a href="{% url 'post_detail' pk=post.pk %}">Comments: {{post.approved_comments.count}}</a>
+			 <hr>
+			 <p>Author: {{post.author|title}}</p>
+			 <p>Published: {{post.published_date|date:'d-M-y-H:m:s'}}</p>
+			 <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-secondary">Click here to read!</a>
+		</div>
 	</div>
 
-	{% for post in post_list %}
-	<h3><a href="{% url 'post_detail' pk=post.pk %}">{{post.title|title}}</a></h3>
-	<a href="{% url 'post_detail' pk=post.pk %}">Comments: {{post.approved_comments.count}}</a>
-	<p>Author: {{post.author|title}}</p>
-	<p>Published: {{post.published_date|date:'d-M-y-H:m:s'}}</p>
-	<br>
 	{% endfor %}
 </div>
 </div>

@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block body_block %}
+<div class="container">
 <h1>Really delete {{object}}?</h1>
 
 <form method="POST">
@@ -9,4 +10,5 @@
 	<input type="submit" class="btn btn-danger" value="Delete">
 	<a type="button" href="{%  url 'post_detail' pk=object.pk %}" class="btn btn-secondary">Cancel</a>
 </form>
+</div>
 {% endblock %}
