@@ -8,7 +8,7 @@ class PostForm(forms.ModelForm):
 		fields = ("author","title", "text", "picture")
 
 		widgets= {
-			'text': forms.Textarea(attrs={'class':'editable'}),
+			'text': forms.Textarea(attrs={'class':'editable medium-editor-textarea postcontent'}),
 		}
 
 class CommentForm(forms.ModelForm):

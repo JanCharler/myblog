@@ -1,7 +1,7 @@
 vals = [[]]
 cols = []
 
-console.log("Hello! Running V3")
+console.log("Hello! Running V5")
 
 number_of_points = 0
 
@@ -45,16 +45,16 @@ function setBoardToBaseColour(points)
 function play_algo()
 {	
 	totalSteps =  Object.keys(algorithmSteps).length
-	console.log(algorithmSteps)
-	console.log(algorithmSteps[0])
-	console.log(algorithmSteps == undefined)
+	
+	
 
-	if (algorithmSteps[0] == undefined)
+	if (cellsSelected.length < 2)
 	{
 		$(".announcement").children().text("We need at least 2 points to find the closest pair!")
 	}
 	else
 	{
+		$(".guide").text("")
 		playIsPressed = true
 		if (count >= totalSteps || count< 0)
 		{
@@ -62,7 +62,7 @@ function play_algo()
 			return 0;
 		}
 
-		console.log(algorithmSteps[count])
+		console.log(algorithmSteps)
 		// Show steps on button
 		$(".compute_btn").text("Step " + count.toString() + "/" + totalSteps.toString())
 		$(".compute_btn").text("Step " + count.toString() + "/" + totalSteps.toString())
@@ -188,7 +188,6 @@ function play_algo()
 				//fill in all rows grey at our x_hat x value, but don't fill in x_hat 
 				if (i !== algorithmSteps[count].boardDivided[2][1])
 				{
-					console.log(i)
 					c = $(".cells").closest("tr").eq(i).children().eq(algorithmSteps[count].boardDivided[2][0])
 					$(c).css("background-color", "grey")
 				}
@@ -404,7 +403,7 @@ function play_algo()
 		{
 			smDelta = algorithmSteps[count].SmallDelta
 			
-			$(".announcement").children().text("Note: Here we excluded the coordinates who's x value is more than our current minimum distance of " +
+			$(".announcement").children().text("Note: Here we only included the coordinates who's x value is more than our current minimum distance of " +
 				smDelta.toFixed(2) + " away from the center point shown in brown here. Next step is to brute-force compare all units in this region- but only those 7 units ahead of them in the list when sorted in ascending Y! (See other post as to why it's always 7!)")
 		}
 
