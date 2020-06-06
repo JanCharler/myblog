@@ -14,7 +14,7 @@ constantly==15.1.0
 cryptography==2.2.2
 cssselect==1.0.3
 cycler==0.10.0
-Django==1.11
+Django==1.11.29
 entrypoints==0.3
 Faker==2.0.3
 flake8==3.7.8
